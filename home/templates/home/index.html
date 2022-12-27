@@ -10,5 +10,30 @@
 {% endblock %}
 
 {% block content %}
-<h1 class="display-4 text-success">It works!</h1>
+<div class="overlay"></div>
+{% if request.user.is_authenticated %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="product-details-container mb-5 mt-md-5">
+            <div class="row w-100 text-center">
+                <a href="{% url 'add_bendrija' %}" class="btn btn-green rounded-0 btn-black-border btn-lg"
+                    style="margin-top: 1.5em;">
+                    <span class="text-uppercase text-better-white">Add Bendrija</span>
+                </a>
+                <a href="" class="btn btn-red rounded-0 btn-black-border btn-lg" style="margin-top: 1.5em;">
+                    <span class="text-uppercase text-better-white">Remove Bendrija</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col text-center mt-3">
+            <h2 class="logo-font">Please Log In To Go Beyond The Home Page</h2>
+        </div>
+    </div>
+</div>
+{% endif %}
 {% endblock %}

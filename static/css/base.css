@@ -17,6 +17,10 @@ body {
     width: fit-content;
 }
 
+.center {
+    display: flex;
+    justify-content: center;
+}
 
 
 .btn-black {
