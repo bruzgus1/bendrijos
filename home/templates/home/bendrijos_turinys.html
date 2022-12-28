@@ -15,19 +15,27 @@
         <div class="col-lg-8 col-md-10 mx-auto">
             <div class="post-preview">
                 <h2 class="post-title">
-                    Your Bendrijos:
+                    {{ bendrija.name }} Turinys:
                 </h2>
                 <div class="container">
                     <div class="row">
-                        {% for bendrija in bendrijos %}
+                        {% for darbas in darbai %}
                         <div class="col">
                             <div class="card" style="width: 18rem;">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ bendrija.name }}</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">{{ bendrija.address }}</h6>
-                                    <a href="" class="card-link">Edit</a>
-                                    <a href="{% url 'bendrijos_turinys' bendrija.id %}" class="card-link">Open</a>
+                                    <h5 class="card-title">Darbas: {{ darbas.pavadinimas }}</h5>
+                                    <p class="card-text">Aprasymas: {{ darbas.aprasymas }}</p>
                                 </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Preliminari Kaina: {{ darbas.preliminari_kaina }}
+                                        <br>
+                                        Galutine Kaina: {{ darbas.galutine_kaina }} </li>
+                                    <li class="list-group-item">Atlikti Iki: {{ darbas.atlikti_iki }}
+                                        <br>
+                                        Atlikimo Data: {{ darbas.darbas_atlikas }}
+                                    </li>
+                                    <li class="list-group-item">Pastabos: {{ darbas.pastabos }}</li>
+                                </ul>
                             </div>
                         </div>
                         {% endfor %}
