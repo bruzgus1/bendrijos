@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+{% if request.user.is_superuser %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <div class="card-body">
+                {% if user.is_superuser %}
+
+                <h3>Atliktas Darbas Form</h3>
+                <form method="post" style="margin-top: 1.3em;">
+                    {% csrf_token %}
+                    <div>
+                        {{ form.bendrija | as_crispy_field }}
+                    </div>
+                    <div>
+                        {{ form.pavadinimas | as_crispy_field }}
+                    </div>
+                    <div>
+                        {{ form.aprasymas | as_crispy_field }}
+                    </div>
+                    <div>
+                        {{ form.preliminari_kaina | as_crispy_field }}
+                    </div>
+                    <div>
+                        {{ form.galutine_kaina | as_crispy_field }}
+                    </div>
+                    <div>
+                        {{ form.atlikti_iki | as_crispy_field }}
+                    </div>
+                    <div>
+                        {{ form.darbas_atlikas | as_crispy_field }}
+                    </div>
+                    <div>
+                        {{ form.pastabos | as_crispy_field }}
+                    </div>
+                    <button type="submit" class="btn btn-blue btn-signup btn-lg text-better-white">Submit</button>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col text-center mt-3">
+            <h2 class="logo-font">Please Log In/Register To Go Beyond The Home Page</h2>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

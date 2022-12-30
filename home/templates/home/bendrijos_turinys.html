@@ -13,6 +13,15 @@
     <div class="row">
         {% if user.is_authenticated %}
         <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="row w-100">
+                <a href="{% url 'darbas_form' bendrija.id %}" class="btn btn-green rounded-0 btn-black-border btn-lg"
+                    style="margin-top: 1.5em;">
+                    <span class="text-uppercase text-better-white">Add Darbas</span>
+                </a>
+                <a href="" class="btn btn-red rounded-0 btn-black-border btn-lg" style="margin-top: 1.5em;">
+                    <span class="text-uppercase text-better-white">Add Ataskaita</span>
+                </a>
+            </div>
             <div class="post-preview">
                 <h2 class="post-title">
                     {{ bendrija.name }} Turinys:
