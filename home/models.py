@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 
 class Bendrija(models.Model):
@@ -33,3 +34,41 @@ class Atliktas_Darbas(models.Model):
 
     def __str__(self):
         return self.pavadinimas
+
+
+class Ataskaita(models.Model):
+
+    class Meta:
+        verbose_name_plural = 'Ataskaitos'
+
+    MENESIAI = (
+        ('Sausis', 'Sausis'),
+        ('Vasaris', 'Vasaris'),
+        ('Kovas', 'Kovas'),
+        ('Balandis', 'Balandis'),
+        ('Gegužė', 'Gegužė'),
+        ('Birželis', 'Birželis'),
+        ('Liepa', 'Liepa'),
+        ('Rugpjutis', 'Rugpjutis'),
+        ('Rugsėjis', 'Rugsėjis'),
+        ('Spalis', 'Spalis'),
+        ('Lapkritis', 'Lapkritis'),
+        ('Gruodis', 'Gruodis'),
+    )
+
+    bendrija = models.ForeignKey(Bendrija, on_delete=models.CASCADE,
+                                 related_name="ataskaitos")
+    YEAR_CHOICES = []
+    for r in range(1980, (datetime.datetime.now().year+1)):
+        YEAR_CHOICES.append((r, r))
+
+    year = models.IntegerField(('year'), choices=YEAR_CHOICES, default=datetime.datetime.now().year)
+    mėnesis = models.CharField(null=False, blank=False, choices=MENESIAI, max_length=20)
+    atlyginimas = models.CharField(max_length=254)
+    sodra = models.CharField(max_length=254)
+    vmi = models.CharField(max_length=254)
+    pvm_saskaitos_kvitas = models.CharField(max_length=254)
+    bankines_operacijos = models.CharField(max_length=254)
+
+    def __str__(self):
+        return f"{self.year} , {self.mėnesis}"

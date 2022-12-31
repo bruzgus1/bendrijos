@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Bendrija, Atliktas_Darbas
+from .models import Bendrija, Atliktas_Darbas, Ataskaita
 
 # Register your models here.
 
@@ -24,5 +24,19 @@ class Atliktas_DarbasAdmin(admin.ModelAdmin):
     )
 
 
+class AtaskaitaAdmin(admin.ModelAdmin):
+    list_display = (
+        'bendrija',
+        'year',
+        'mėnesis',
+        'atlyginimas',
+        'sodra',
+        'vmi',
+        'pvm_saskaitos_kvitas',
+        'bankines_operacijos',
+    )
+
+
+admin.site.register(Ataskaita, AtaskaitaAdmin)
 admin.site.register(Atliktas_Darbas, Atliktas_DarbasAdmin)
 admin.site.register(Bendrija, BendrijaAdmin)
