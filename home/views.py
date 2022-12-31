@@ -1,6 +1,6 @@
 from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Bendrija, Atliktas_Darbas
+from .models import Bendrija, Atliktas_Darbas, Ataskaita
 from .forms import BendrijaForm, Atliktas_DarbasForm
 
 # Create your views here.
@@ -30,11 +30,13 @@ def bendrijos_turinys_view(request, bendrija_id):
 
     bendrija = get_object_or_404(Bendrija, pk=bendrija_id)
     darbai = bendrija.atliktas_darbas.all
+    ataskaitos = bendrija.ataskaita.all
 
     template = 'home/bendrijos_turinys.html'
     context = {
         'bendrija': bendrija,
         'darbai': darbai,
+        'ataskaitos': ataskaitos,
     }
 
     return render(request, template, context)

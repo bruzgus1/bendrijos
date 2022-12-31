@@ -57,7 +57,7 @@ class Ataskaita(models.Model):
     )
 
     bendrija = models.ForeignKey(Bendrija, on_delete=models.CASCADE,
-                                 related_name="ataskaitos")
+                                 related_name="ataskaita")
     YEAR_CHOICES = []
     for r in range(1980, (datetime.datetime.now().year+1)):
         YEAR_CHOICES.append((r, r))

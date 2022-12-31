@@ -13,39 +13,62 @@
     <div class="row">
         {% if user.is_authenticated %}
         <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="row w-100">
+            <div class="row w-100 text-justify">
                 <a href="{% url 'darbas_form' bendrija.id %}" class="btn btn-green rounded-0 btn-black-border btn-lg"
                     style="margin-top: 1.5em;">
-                    <span class="text-uppercase text-better-white">Add Darbas</span>
+                    <span class="text-uppercase">Add Darbas</span>
                 </a>
                 <a href="" class="btn btn-red rounded-0 btn-black-border btn-lg" style="margin-top: 1.5em;">
-                    <span class="text-uppercase text-better-white">Add Ataskaita</span>
+                    <span class="text-uppercase">Add Ataskaita</span>
                 </a>
             </div>
             <div class="post-preview">
-                <h2 class="post-title">
+                <h2 class="post-title mb-3">
                     {{ bendrija.name }} Turinys:
                 </h2>
-                <div class="container">
-                    <div class="row">
+                <div class="row w-100">
+                    <div class="col-sm">
+                        <h3>Darbai:</h3>
                         {% for darbas in darbai %}
-                        <div class="col">
-                            <div class="card" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Darbas: {{ darbas.pavadinimas }}</h5>
-                                    <p class="card-text">Aprasymas: {{ darbas.aprasymas }}</p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Preliminari Kaina: {{ darbas.preliminari_kaina }}
-                                        <br>
-                                        Galutine Kaina: {{ darbas.galutine_kaina }} </li>
-                                    <li class="list-group-item">Atlikti Iki: {{ darbas.atlikti_iki }}
-                                        <br>
-                                        Atlikimo Data: {{ darbas.darbas_atlikas }}
-                                    </li>
-                                    <li class="list-group-item">Pastabos: {{ darbas.pastabos }}</li>
-                                </ul>
+                        <div class="card mt-2" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Darbas: {{ darbas.pavadinimas }}</h5>
+                                <p class="card-text">Aprasymas: {{ darbas.aprasymas }}</p>
                             </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Preliminari Kaina: {{ darbas.preliminari_kaina }}
+                                    <br>
+                                    Galutine Kaina: {{ darbas.galutine_kaina }} </li>
+                                <li class="list-group-item">Atlikti Iki: {{ darbas.atlikti_iki }}
+                                    <br>
+                                    Atlikimo Data: {{ darbas.darbas_atlikas }}
+                                </li>
+                                <li class="list-group-item">Pastabos: {{ darbas.pastabos }}</li>
+                            </ul>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="col-sm">
+                        <h3>Ataskaitos:</h3>
+                        {% for ataskaita in ataskaitos %}
+
+                        <div class="card mt-2" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Metai: {{ ataskaita.year }}
+                                    <br>
+                                    Mėnesis: {{ ataskaita.mėnesis }}
+                                </h5>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Atlyginimas: {{ ataskaita.atlyginimas }}</li>
+                                <li class="list-group-item">Sodra: {{ ataskaita.sodra }}</li>
+                                <li class="list-group-item">VMI: {{ ataskaita.vmi }}</li>
+                                <li class="list-group-item">PVM Saskaitos Kvitas: {{ ataskaita.pvm_saskaitos_kvitas }}
+                                </li>
+                                <li class="list-group-item">Bankines Operacijos: {{ ataskaita.bankines_operacijos }}
+                                </li>
+                            </ul>
                         </div>
                         {% endfor %}
                     </div>
