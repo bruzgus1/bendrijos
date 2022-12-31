@@ -72,3 +72,7 @@ class Ataskaita(models.Model):
 
     def __str__(self):
         return f"{self.year} , {self.mėnesis}"
+
+    @property
+    def sum(self):
+        return sum([self.atlyginimas, self.sodra, self.vmi, self.pvm_saskaitos_kvitas, self.bankines_operacijos])
