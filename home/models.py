@@ -64,11 +64,11 @@ class Ataskaita(models.Model):
 
     year = models.IntegerField(('year'), choices=YEAR_CHOICES, default=datetime.datetime.now().year)
     mėnesis = models.CharField(null=False, blank=False, choices=MENESIAI, max_length=20)
-    atlyginimas = models.CharField(max_length=254)
-    sodra = models.CharField(max_length=254)
-    vmi = models.CharField(max_length=254)
-    pvm_saskaitos_kvitas = models.CharField(max_length=254)
-    bankines_operacijos = models.CharField(max_length=254)
+    atlyginimas = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
+    sodra = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
+    vmi = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
+    pvm_saskaitos_kvitas = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
+    bankines_operacijos = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
 
     def __str__(self):
         return f"{self.year} , {self.mėnesis}"
