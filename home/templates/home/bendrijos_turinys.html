@@ -18,7 +18,8 @@
                     style="margin-top: 1.5em;">
                     <span class="text-uppercase">Add Darbas</span>
                 </a>
-                <a href="" class="btn btn-red rounded-0 btn-black-border btn-lg" style="margin-top: 1.5em;">
+                <a href="{% url 'ataskaita_form' bendrija.id %}" class="btn btn-red rounded-0 btn-black-border btn-lg"
+                    style="margin-top: 1.5em;">
                     <span class="text-uppercase">Add Ataskaita</span>
                 </a>
             </div>
@@ -61,15 +62,15 @@
                                 </h5>
                             </div>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Atlyginimas: {{ ataskaita.atlyginimas }}</li>
-                                <li class="list-group-item">Sodra: {{ ataskaita.sodra }}</li>
-                                <li class="list-group-item">VMI: {{ ataskaita.vmi }}</li>
-                                <li class="list-group-item">PVM Saskaitos Kvitas: {{ ataskaita.pvm_saskaitos_kvitas }}
+                                <li class="list-group-item">Atlyginimas: {{ ataskaita.atlyginimas }}€</li>
+                                <li class="list-group-item">Sodra: {{ ataskaita.sodra }}€</li>
+                                <li class="list-group-item">VMI: {{ ataskaita.vmi }}€</li>
+                                <li class="list-group-item">PVM Saskaitos Kvitas: {{ ataskaita.pvm_saskaitos_kvitas }}€
                                 </li>
-                                <li class="list-group-item">Bankines Operacijos: {{ ataskaita.bankines_operacijos }}
+                                <li class="list-group-item">Bankines Operacijos: {{ ataskaita.bankines_operacijos }}€
                                 </li>
                                 <li class="list-group-item" style="color: black; text-decoration: underline;">Suma:
-                                    {{ ataskaita.sum }}
+                                    {{ ataskaita.sum }}€
                                 </li>
                             </ul>
                         </div>

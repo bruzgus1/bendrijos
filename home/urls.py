@@ -8,4 +8,5 @@ urlpatterns = [
     path('add_bendrija/', views.add_bendrija_view, name='add_bendrija'),
     path('bendrijos_turinys/<bendrija_id>', views.bendrijos_turinys_view, name='bendrijos_turinys'),
     path('darbas_form/<bendrija_id>', views.add_darbas_view, name='darbas_form'),
+    path('ataskaita_form/<bendrija_id>', views.add_ataskaita_view, name='ataskaita_form'),
 ]

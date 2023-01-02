@@ -1,7 +1,7 @@
 from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Bendrija, Atliktas_Darbas, Ataskaita
-from .forms import BendrijaForm, Atliktas_DarbasForm
+from .forms import BendrijaForm, Atliktas_DarbasForm, AtaskaitaForm
 
 # Create your views here.
 
@@ -88,3 +88,30 @@ def add_darbas_view(request, bendrija_id):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def add_ataskaita_view(request, bendrija_id):
+
+    if not request.user.is_superuser:
+        return redirect(reverse('home'))
+
+    bendrija = get_object_or_404(Bendrija, pk=bendrija_id)
+
+    form = AtaskaitaForm
+
+    if request.method == 'POST':
+        form = AtaskaitaForm(request.POST)
+        if form.is_valid():
+            form.bendirja = bendrija
+            form.save()
+            return redirect(reverse('bendrijos'))
+
+    template = 'home/ataskaita_form.html'
+    context = {
+        'bendrija': bendrija,
+        'form': form,
+    }
+
+    return render(request, template, context)
+

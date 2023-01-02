@@ -1,6 +1,6 @@
 from django import forms
-from django.forms import ModelForm, TextInput, DateInput
-from .models import Bendrija, Atliktas_Darbas
+from django.forms import ModelForm, TextInput, DateInput, NumberInput, Select
+from .models import Bendrija, Atliktas_Darbas, Ataskaita
 
 
 class BendrijaForm(forms.ModelForm):
@@ -44,5 +44,32 @@ class Atliktas_DarbasForm(forms.ModelForm):
             }),
             'pastabos': TextInput(attrs={
                 'type': 'text',
+            }),
+        }
+
+
+class AtaskaitaForm(forms.ModelForm):
+    class Meta:
+        model = Ataskaita
+        fields = ['bendrija', 'year', 'mėnesis', 'atlyginimas', 'sodra', 'vmi', 'pvm_saskaitos_kvitas', 'bankines_operacijos']
+        widgets = {
+            'year': NumberInput(attrs={
+                'type': 'number',
+            }),
+            'mėnesis': Select(attrs={'class': 'select'}),
+            'atlyginimas': NumberInput(attrs={
+                'type': 'number',
+            }),
+            'sodra': NumberInput(attrs={
+                'type': 'number',
+            }),
+            'vmi': NumberInput(attrs={
+                'type': 'number',
+            }),
+            'pvm_saskaitos_kvitas': NumberInput(attrs={
+                'type': 'number',
+            }),
+            'bankines_operacijos': NumberInput(attrs={
+                'type': 'number',
             }),
         }
