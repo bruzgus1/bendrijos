@@ -115,3 +115,23 @@ def add_ataskaita_view(request, bendrija_id):
 
     return render(request, template, context)
 
+
+def edit_bendrija_view(request, bendrija_id):
+    """ A view to edit Bendrijos name """
+
+    bendrija = get_object_or_404(Bendrija, id=bendrija_id)
+
+    if request.method == 'POST':
+        existing_bendrija = BendrijaForm(request.POST, instance=bendrija)
+        if existing_bendrija.is_valid():
+            existing_bendrija.save()
+            return redirect(reverse('bendrijos'))
+    else:
+        existing_bendrija = BendrijaForm(instance=bendrija)
+
+    context = {
+        'existing_bendrija': existing_bendrija,
+        "bendrija": bendrija,
+    }
+    return render(request, 'home/edit_bendrija.html', context)
+

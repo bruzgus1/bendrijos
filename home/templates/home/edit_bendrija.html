@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% if user.is_authenticated %}
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-preview">
+                <h2 class="post-title">
+                    Edit Bendrijos:
+                </h2>
+                <div class="container">
+                    <form method="POST" action="{% url 'edit_bendrija' bendrija.id %}">
+                        {% csrf_token %}
+                        <div class="row">
+                            {{ existing_bendrija.name | as_crispy_field }}
+                        </div>
+                        <div class="row">
+                            {{ existing_bendrija.address | as_crispy_field }}
+                        </div>
+                        <div>
+                            <p>
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-preview">
+                <h2 class="post-title">
+                    Please Login
+                </h2>
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+{%endblock%}

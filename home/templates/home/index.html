@@ -12,14 +12,16 @@
 {% block content %}
 <div class="overlay"></div>
 {% if request.user.is_authenticated %}
-<div class="container-fluid">
+<div class="container">
     <div class="row">
-        <div class="product-details-container mb-5 mt-md-5">
-            <div class="row w-100 text-center">
-                <a href="{% url 'add_bendrija' %}" class="btn btn-green rounded-0 btn-black-border btn-lg"
-                    style="margin-top: 1.5em;">
-                    <span class="text-uppercase text-better-white">Add Bendrija</span>
-                </a>
+        <div class="col-sm">
+            <div class="card-body">
+                <div class="row w-100 text-center">
+                    <a href="{% url 'add_bendrija' %}" class="btn btn-green rounded-0 btn-black-border btn-lg"
+                        style="margin-top: 1.5em;">
+                        <span class="text-uppercase text-better-white">Add Bendrija</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
