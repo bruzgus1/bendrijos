@@ -73,6 +73,10 @@
                                     {{ ataskaita.sum }}€
                                 </li>
                             </ul>
+                            <div class="card-body">
+                                <a href="{% url 'edit_ataskaita' ataskaita.id %}" class="card-link">Edit</a>
+
+                            </div>
                         </div>
                         {% endfor %}
                     </div>
@@ -83,7 +87,7 @@
         <div class="col-lg-8 col-md-10 mx-auto">
             <div class="post-preview">
                 <h2 class="post-title">
-                    Please Login Or Register for An Account
+                    Please Login
                 </h2>
             </div>
         </div>

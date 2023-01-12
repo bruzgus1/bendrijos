@@ -10,4 +10,5 @@ urlpatterns = [
     path('darbas_form/<bendrija_id>', views.add_darbas_view, name='darbas_form'),
     path('ataskaita_form/<bendrija_id>', views.add_ataskaita_view, name='ataskaita_form'),
     path('edit_bendrija/<bendrija_id>', views.edit_bendrija_view, name='edit_bendrija'),
+    path('edit_ataskaita/<ataskaita_id>', views.edit_ataskaita_view, name='edit_ataskaita'),
 ]

@@ -22,28 +22,28 @@
                 <form method="post" style="margin-top: 1.3em;">
                     {% csrf_token %}
                     <div>
-                        {{ form.bendrija | as_crispy_field }}
+                        {{ existing_ataskaita.bendrija | as_crispy_field }}
                     </div>
                     <div>
-                        {{ form.year | as_crispy_field }}
+                        {{ existing_ataskaita.year | as_crispy_field }}
                     </div>
                     <div>
-                        {{ form.mėnesis | as_crispy_field }}
+                        {{ existing_ataskaita.mėnesis | as_crispy_field }}
                     </div>
                     <div>
-                        {{ form.atlyginimas | as_crispy_field }}
+                        {{ existing_ataskaita.atlyginimas  | as_crispy_field }}
                     </div>
                     <div>
-                        {{ form.sodra | as_crispy_field }}
+                        {{ existing_ataskaita.sodra | as_crispy_field }}
                     </div>
                     <div>
-                        {{ form.vmi | as_crispy_field }}
+                        {{ existing_ataskaita.vmi | as_crispy_field }}
                     </div>
                     <div>
-                        {{ form.pvm_saskaitos_kvitas | as_crispy_field }}
+                        {{ existing_ataskaita.pvm_saskaitos_kvitas | as_crispy_field }}
                     </div>
                     <div>
-                        {{ form.bankines_operacijos | as_crispy_field }}
+                        {{ existing_ataskaita.bankines_operacijos | as_crispy_field }}
                     </div>
                     <button type="submit" class="btn btn-blue btn-signup btn-lg text-better-white">Submit</button>
                 </form>

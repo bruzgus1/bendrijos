@@ -116,18 +116,18 @@ def add_ataskaita_view(request, bendrija_id):
     return render(request, template, context)
 
 
-def edit_bendrija_view(request, bendrija_id):
+def edit_bendrija_view(request, ataskaita_id):
     """ A view to edit Bendrijos name """
 
-    bendrija = get_object_or_404(Bendrija, id=bendrija_id)
+    ataskiata = get_object_or_404(Ataskaita, id=ataskaita_id)
 
     if request.method == 'POST':
-        existing_bendrija = BendrijaForm(request.POST, instance=bendrija)
-        if existing_bendrija.is_valid():
-            existing_bendrija.save()
+        existing_ataskaita = AtaskaitaForm(request.POST, instance=ataskiata)
+        if existing_ataskaita.is_valid():
+            existing_ataskaita.save()
             return redirect(reverse('bendrijos'))
     else:
-        existing_bendrija = BendrijaForm(instance=bendrija)
+        existing_ataskiata = AtaskaitaForm(instance=ataskiata)
 
     context = {
         'existing_bendrija': existing_bendrija,
@@ -135,3 +135,22 @@ def edit_bendrija_view(request, bendrija_id):
     }
     return render(request, 'home/edit_bendrija.html', context)
 
+
+def edit_ataskaita_view(request, ataskaita_id):
+    """ A view to edit Ataskaitos model """
+
+    ataskaita = get_object_or_404(Ataskaita, id=ataskaita_id)
+
+    if request.method == 'POST':
+        existing_ataskaita = AtaskaitaForm(request.POST, instance=ataskaita)
+        if existing_ataskaita.is_valid():
+            existing_ataskaita.save()
+            return redirect(reverse('bendrijos'))
+    else:
+        existing_ataskaita = AtaskaitaForm(instance=ataskaita)
+
+    context = {
+        'existing_ataskaita': existing_ataskaita,
+        "ataskaita": ataskaita,
+    }
+    return render(request, 'home/edit_ataskaita.html', context)
