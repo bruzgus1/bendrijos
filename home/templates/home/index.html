@@ -11,7 +11,7 @@
 
 {% block content %}
 <div class="overlay"></div>
-{% if request.user.is_authenticated %}
+{% if request.user.is_superuser %}
 <div class="container">
     <div class="row">
         <div class="col-sm">
