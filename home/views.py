@@ -154,3 +154,23 @@ def edit_ataskaita_view(request, ataskaita_id):
         "ataskaita": ataskaita,
     }
     return render(request, 'home/edit_ataskaita.html', context)
+
+
+def edit_atliktas_darbas_view(request, darbas_id):
+    """ A view to edit Atliktas_Darbas model """
+
+    atliktas_darbas = get_object_or_404(Atliktas_Darbas, id=darbas_id)
+
+    if request.method == 'POST':
+        existing_atliktas_darbas = Atliktas_DarbasForm(request.POST, instance=atliktas_darbas)
+        if existing_atliktas_darbas.is_valid():
+            existing_atliktas_darbas.save()
+            return redirect(reverse('bendrijos'))
+    else:
+        existing_atliktas_darbas = Atliktas_DarbasForm(instance=atliktas_darbas)
+
+    context = {
+        'existing_atliktas_darbas': existing_atliktas_darbas,
+        "atliktas_darbas": atliktas_darbas,
+    }
+    return render(request, 'home/edit_atliktas_darbas.html', context)

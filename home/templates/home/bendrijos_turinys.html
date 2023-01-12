@@ -13,13 +13,11 @@
     <div class="row">
         {% if user.is_authenticated %}
         <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="row w-100 text-justify">
-                <a href="{% url 'darbas_form' bendrija.id %}" class="btn btn-green rounded-0 btn-black-border btn-lg"
-                    style="margin-top: 1.5em;">
+            <div class="row text-justify">
+                <a href="{% url 'darbas_form' bendrija.id %}" class="btn btn-lg" style="margin-top: 1.5em;">
                     <span class="text-uppercase">Add Darbas</span>
                 </a>
-                <a href="{% url 'ataskaita_form' bendrija.id %}" class="btn btn-red rounded-0 btn-black-border btn-lg"
-                    style="margin-top: 1.5em;">
+                <a href="{% url 'ataskaita_form' bendrija.id %}" class="btn btn-lg" style="margin-top: 1.5em;">
                     <span class="text-uppercase">Add Ataskaita</span>
                 </a>
             </div>
@@ -46,6 +44,9 @@
                                 </li>
                                 <li class="list-group-item">Pastabos: {{ darbas.pastabos }}</li>
                             </ul>
+                            <div class="card-body">
+                                <a href="{% url 'edit_atliktas_darbas' darbas.id %}" class="card-link">Edit</a>
+                            </div>
                         </div>
                         {% endfor %}
                     </div>

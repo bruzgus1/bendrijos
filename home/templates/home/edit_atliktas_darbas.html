@@ -18,32 +18,32 @@
             <div class="card-body">
                 {% if user.is_superuser %}
 
-                <h3>Ataskaita Form</h3>
+                <h3>Atliktas Darbas Form</h3>
                 <form method="post" style="margin-top: 1.3em;">
                     {% csrf_token %}
                     <div>
-                        {{ existing_ataskaita.bendrija | as_crispy_field }}
+                        {{ existing_atliktas_darbas.bendrija | as_crispy_field }}
                     </div>
                     <div>
-                        {{ existing_ataskaita.year | as_crispy_field }}
+                        {{ existing_atliktas_darbas.pavadinimas | as_crispy_field }}
                     </div>
                     <div>
-                        {{ existing_ataskaita.mėnesis | as_crispy_field }}
+                        {{ existing_atliktas_darbas.aprasymas | as_crispy_field }}
                     </div>
                     <div>
-                        {{ existing_ataskaita.atlyginimas  | as_crispy_field }}
+                        {{ existing_atliktas_darbas.preliminari_kaina   | as_crispy_field }}
                     </div>
                     <div>
-                        {{ existing_ataskaita.sodra | as_crispy_field }}
+                        {{ existing_atliktas_darbas.galutine_kaina | as_crispy_field }}
                     </div>
                     <div>
-                        {{ existing_ataskaita.vmi | as_crispy_field }}
+                        {{ existing_atliktas_darbas.atlikti_iki | as_crispy_field }}
                     </div>
                     <div>
-                        {{ existing_ataskaita.pvm_saskaitos_kvitas | as_crispy_field }}
+                        {{ existing_atliktas_darbas.darbas_atlikas  | as_crispy_field }}
                     </div>
                     <div>
-                        {{ existing_ataskaita.bankines_operacijos | as_crispy_field }}
+                        {{ existing_atliktas_darbas.pastabos | as_crispy_field }}
                     </div>
                     <button type="submit" class="btn btn-blue btn-signup btn-lg text-better-white">Submit</button>
                 </form>
