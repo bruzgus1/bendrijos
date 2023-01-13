@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block page_header %}
 <div class="container header-container">
@@ -22,10 +23,10 @@
                         <form method="POST" action="">
                             {% csrf_token %}
                             <div>
-                                Name: {{ form.name }}
+                                {{ form.name | as_crispy_field }}
                             </div>
                             <div>
-                                address: {{ form.address }}
+                                {{ form.address | as_crispy_field }}
                             </div>
                             <div>
                                 <p>
