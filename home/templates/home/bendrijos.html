@@ -1,15 +1,8 @@
 {% extends "base.html" %}
 
-{% block page_header %}
-<div class="container header-container">
-    <div class="row">
-        <div class="col"></div>
-    </div>
-</div>
-{% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container" style="margin-top: 100px;">
     <div class="row">
         {% if request.user.is_superuser %}
         <div class="col-lg-8 col-md-10 mx-auto">
@@ -35,16 +28,16 @@
                 </div>
             </div>
         </div>
-        {% else %}
-        <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="post-preview">
-                <h2 class="post-title">
-                    Please Login
-                </h2>
-            </div>
-        </div>
-        {% endif %}
-
     </div>
 </div>
+{% else %}
+<div class="col-lg-8 col-md-10 mx-auto">
+    <div class="post-preview">
+        <h2 class="post-title">
+            Please Login
+        </h2>
+    </div>
+</div>
+{% endif %}
+
 {%endblock%}
