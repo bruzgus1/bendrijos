@@ -18,8 +18,10 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{ bendrija.name }}</h5>
                                     <h6 class="card-subtitle mb-2 text-muted">{{ bendrija.address }}</h6>
-                                    <a href="{% url 'edit_bendrija' bendrija.id %}" class="card-link">Edit</a>
-                                    <a href="{% url 'bendrijos_turinys' bendrija.id %}" class="card-link">Open</a>
+                                    <a href="{% url 'bendrijos_turinys_ataskaita' bendrija.id %}"
+                                        class="card-link">Ataskaita</a>
+                                    <a href="{% url 'bendrijos_turinys_darbas' bendrija.id %}"
+                                        class="card-link">Darbai</a>
                                 </div>
                             </div>
                         </div>

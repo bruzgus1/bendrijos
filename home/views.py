@@ -174,3 +174,33 @@ def edit_atliktas_darbas_view(request, darbas_id):
         "atliktas_darbas": atliktas_darbas,
     }
     return render(request, 'home/edit_atliktas_darbas.html', context)
+
+
+def bendrijos_turinys_darbas_view(request, bendrija_id):
+    """ A view to show Bendrijos Turini """
+
+    bendrija = get_object_or_404(Bendrija, pk=bendrija_id)
+    darbai = bendrija.atliktas_darbas.all
+
+    template = 'home/bendrijos_turinys_darbas.html'
+    context = {
+        'bendrija': bendrija,
+        'darbai': darbai,
+    }
+
+    return render(request, template, context)
+
+
+def bendrijos_turinys_ataskaita_view(request, bendrija_id):
+    """ A view to show Bendrijos Turini """
+
+    bendrija = get_object_or_404(Bendrija, pk=bendrija_id)
+    ataskaitos = bendrija.ataskaita.all
+
+    template = 'home/bendrijos_turinys_ataskaita.html'
+    context = {
+        'bendrija': bendrija,
+        'ataskaitos': ataskaitos,
+    }
+
+    return render(request, template, context)
