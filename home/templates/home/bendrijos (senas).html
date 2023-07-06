@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="container" style="margin-top: 100px;">
+    <div class="row">
+        {% if request.user.is_superuser %}
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-preview">
+                <h2 class="post-title">
+                    Your Bendrijos:
+                </h2>
+                <div class="container">
+                    <div class="row">
+                        {% for bendrija in bendrijos %}
+                        <div class="col">
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ bendrija.name }}</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">{{ bendrija.address }}</h6>
+                                    <a href="{% url 'bendrijos_turinys_ataskaita' bendrija.id %}"
+                                        class="card-link">Ataskaita</a>
+                                    <a href="{% url 'bendrijos_turinys_darbas' bendrija.id %}"
+                                        class="card-link">Darbai</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="col-lg-8 col-md-10 mx-auto">
+    <div class="post-preview">
+        <h2 class="post-title">
+            Please Login
+        </h2>
+    </div>
+</div>
+{% endif %}
+
+{%endblock%}

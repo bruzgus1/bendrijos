@@ -6,23 +6,18 @@
 {% if request.user.is_superuser %}
 <div class="container" style="margin-top: 100px;">
     <div class="row">
-        <div class="col-sm">
-            <div class="card-body">
-                <div class="row w-100 text-center">
-                    <a href="{% url 'add_bendrija' %}" class="btn btn-green rounded-0 btn-black-border btn-lg"
-                        style="margin-top: 1.5em;">
-                        <span class="text-uppercase text-better-white">Add Bendrija</span>
-                    </a>
-                </div>
-            </div>
+        <div class="col" style="display: flex; justify-content: center;">
+            <a href="{% url 'add_bendrija' %}" class="btn btn-black rounded-0 btn-black-border btn-lg">
+                <span class="text-uppercase text-better-white">Add Bendrija</span>
+            </a>
         </div>
     </div>
 </div>
 {% else %}
-<div class="container-fluid">
+<div class="container" style="margin-top: 100px;">
     <div class="row">
         <div class="col text-center mt-3">
-            <h2 class="logo-font">Please Log In To Go Beyond The Home Page</h2>
+            <h2 class="logo-font text-better-white">Prašome Prisijungti</h2>
         </div>
     </div>
 </div>

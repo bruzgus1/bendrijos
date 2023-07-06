@@ -17,6 +17,13 @@ def bendrijos_view(request):
     """ A view to show all Bendrijos """
 
     bendrijos = Bendrija.objects.all()
+    query = None
+
+    if 'q' in request.GET:
+        query = request.GET['q']
+
+        queries = Q(name__icontains=query)
+        bendrijos = bendrijos.filter(queries)
 
     template = 'home/bendrijos.html'
     context = {

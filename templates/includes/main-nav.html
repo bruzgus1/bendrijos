@@ -3,7 +3,7 @@
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'home' %}"
                 id="all-products-link" aria-haspopup="true" aria-expanded="false">
-                home
+                PRADZIA
             </a>
         </li>
 
@@ -13,21 +13,20 @@
                 Bendrijos
             </a>
         </li>
-        <li class="list-inline-item dropdown">
+        <li class="list-inline-item dropdown" id="acc">
             <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
                 <div class="text-center">
-                    <div><i class="fas fa-user fa-lg"></i></div>
-                    <p class="my-0">My Account</p>
+                    <p class="my-0">MANO AKAUNTAS</p>
                 </div>
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="user-options">
                 {% if request.user.is_authenticated %}
                 {% if request.user.is_superuser %}
                 {% endif %}
-                <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                <a href="{% url 'account_logout' %}" class="dropdown-item">Atsijungti</a>
                 {% else %}
-                <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                <a href="{% url 'account_login' %}" class="dropdown-item">Prisijungti</a>
                 {% endif %}
             </div>
         </li>
