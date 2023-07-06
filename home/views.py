@@ -1,5 +1,6 @@
 from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from .models import Bendrija, Atliktas_Darbas, Ataskaita
 from .forms import BendrijaForm, Atliktas_DarbasForm, AtaskaitaForm
 
@@ -20,23 +21,6 @@ def bendrijos_view(request):
     template = 'home/bendrijos.html'
     context = {
         'bendrijos': bendrijos,
-    }
-
-    return render(request, template, context)
-
-
-def bendrijos_turinys_view(request, bendrija_id):
-    """ A view to show Bendrijos Turini """
-
-    bendrija = get_object_or_404(Bendrija, pk=bendrija_id)
-    darbai = bendrija.atliktas_darbas.all
-    ataskaitos = bendrija.ataskaita.all
-
-    template = 'home/bendrijos_turinys.html'
-    context = {
-        'bendrija': bendrija,
-        'darbai': darbai,
-        'ataskaitos': ataskaitos,
     }
 
     return render(request, template, context)
@@ -195,12 +179,20 @@ def bendrijos_turinys_ataskaita_view(request, bendrija_id):
     """ A view to show Bendrijos Turini """
 
     bendrija = get_object_or_404(Bendrija, pk=bendrija_id)
-    ataskaitos = bendrija.ataskaita.all
+    ataskaitos = bendrija.ataskaita.all()
+    query = None
+
+    if 'q' in request.GET:
+        query = request.GET['q']
+
+        queries = Q(mėnesis__icontains=query)
+        ataskaitos = ataskaitos.filter(queries)
 
     template = 'home/bendrijos_turinys_ataskaita.html'
     context = {
         'bendrija': bendrija,
         'ataskaitos': ataskaitos,
+        'search_term': query,
     }
 
     return render(request, template, context)
