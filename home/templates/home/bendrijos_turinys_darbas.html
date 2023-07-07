@@ -2,55 +2,84 @@
 
 
 {% block content %}
-<div class="container" style="margin-top: 100px;">
-    <div class="row">
-        {% if user.is_superuser %}
-        <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="row text-justify">
-                <a href="{% url 'darbas_form' bendrija.id %}" class="btn btn-lg" style="margin-top: 1.5em;">
-                    <span class="text-uppercase">Add Darbas</span>
-                </a>
-            </div>
-            <div class="post-preview">
-                <h2 class="post-title mb-3">
-                    {{ bendrija.name }} Turinys:
-                </h2>
-                <div class="row w-100">
-                    <div class="col-sm">
-                        <h3>Darbai:</h3>
-                        {% for darbas in darbai %}
-                        <div class="card mt-2" style="width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">Darbas: {{ darbas.pavadinimas }}</h5>
-                                <p class="card-text">Aprasymas: {{ darbas.aprasymas }}</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Preliminari Kaina: {{ darbas.preliminari_kaina }}
-                                    <br>
-                                    Galutine Kaina: {{ darbas.galutine_kaina }} </li>
-                                <li class="list-group-item">Atlikti Iki: {{ darbas.atlikti_iki }}
-                                    <br>
-                                    Atlikimo Data: {{ darbas.darbas_atlikas }}
-                                </li>
-                                <li class="list-group-item">Pastabos: {{ darbas.pastabos }}</li>
-                            </ul>
-                            <div class="card-body">
-                                <a href="{% url 'edit_atliktas_darbas' darbas.id %}" class="card-link">Edit</a>
-                            </div>
-                        </div>
-                        {% endfor %}
+<div class="container-fluid" style="margin-top: 100px;">
+    {% if user.is_superuser %}
+    <div class="row" style="margin-left: 15%; margin-right: 15%;">
+        <div class="col">
+            <h2 style="color: #F5FFFA">{{ bendrija.name }} Darbai:</h2>
+        </div>
+    </div>
+    <div class="row" style="margin-left: 15%; margin-right: 15%;">
+        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+            <form method="GET" action="{% url 'bendrijos_turinys_darbas' bendrija.id %}">
+                <div class="input-group w-100">
+                    <input class="form-control border border-black rounded-0" type="text" name="q"
+                        placeholder="Ieškok darbą">
+                    <div class="input-group-append">
+                        <button class="form-control btn btn-black border border-black rounded-0" type="submit">
+                            <span class="icon">
+                                <i class="fas fa-search"></i>
+                            </span>
+                        </button>
                     </div>
                 </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" style="margin-left: 15%; margin-right: 15%;">
+        <div class="col">
+            <a href="{% url 'darbas_form' bendrija.id %}" class="btn btn-black rounded-0 btn-black-border btn-lg"
+                style="margin-top: 1.5em;">
+                <span class="text-uppercase" style="color: #F5FFFA">Pridėti Darbą</span>
+            </a>
+        </div>
+    </div>
+    <div class="row" style="margin-left: 15%; margin-right: 15%;">
+        <div class="col">
+            <h3 style="color: #F5FFFA; margin-top: 1%;">Darbai:</h3>
+        </div>
+    </div>
+    <div class="row" style="margin-left: 15%; margin-right: 15%;">
+        <div class="col" style="display: flex; flex-wrap:wrap;">
+            {% for darbas in darbai %}
+
+            <div class="card mt-2" style="width: 18rem; margin-right: 1%; background: black;">
+                <div class="card-body">
+                    <h5 class="card-title" style="color: #F5FFFA;">Darbas: {{ darbas.pavadinimas }}</h5>
+                    <p class="card-text" style="color: #F5FFFA;">Aprasymas: {{ darbas.aprasymas }}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"
+                        style="color: #F5FFFA; background: black; border-top: 1px solid white; border-bottom: 1px solid white;">
+                        Preliminari Kaina: {{ darbas.preliminari_kaina }}
+                        <br>
+                        Galutine Kaina: {{ darbas.galutine_kaina }}
+                    </li>
+                    <li class="list-group-item"
+                        style="color: #F5FFFA; background: black; border-bottom: 1px solid white;">Atlikti Iki:
+                        {{ darbas.atlikti_iki }}
+                        <br>
+                        Atlikimo Data: {{ darbas.darbas_atlikas }}</li>
+                    <li class="list-group-item"
+                        style="color: #F5FFFA; background: black; border-bottom: 1px solid white;">Pastabos:
+                        {{ darbas.pastabos }}</li>
+                </ul>
+                <div class="card-body">
+                    <a href="{% url 'edit_atliktas_darbas' darbas.id %}" class="card-link text-uppercase"
+                        style="color: #F5FFFA;">Redaguoti</a>
+
+                </div>
             </div>
+            {% endfor %}
         </div>
     </div>
 </div>
 {% else %}
-<div class="col-lg-8 col-md-10 mx-auto">
-    <div class="post-preview">
-        <h2 class="post-title">
-            Please Login
-        </h2>
+<div class="container" style="margin-top: 100px;">
+    <div class="row">
+        <div class="col text-center mt-3">
+            <h2 class="logo-font text-better-white">Prašome Prisijungti</h2>
+        </div>
     </div>
 </div>
 {% endif %}

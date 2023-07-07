@@ -171,12 +171,20 @@ def bendrijos_turinys_darbas_view(request, bendrija_id):
     """ A view to show Bendrijos Turini """
 
     bendrija = get_object_or_404(Bendrija, pk=bendrija_id)
-    darbai = bendrija.atliktas_darbas.all
+    darbai = bendrija.atliktas_darbas.all()
+    query = None
+
+    if 'q' in request.GET:
+        query = request.GET['q']
+
+        queries = Q(pavadinimas__icontains=query)
+        darbai = darbai.filter(queries)
 
     template = 'home/bendrijos_turinys_darbas.html'
     context = {
         'bendrija': bendrija,
         'darbai': darbai,
+        'search_term': query,
     }
 
     return render(request, template, context)
