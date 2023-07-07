@@ -11,34 +11,34 @@
             <div class="card-body">
                 {% if user.is_superuser %}
 
-                <h3>Edit Atliktas Darbas Form</h3>
+                <h3 style="color: #F5FFFA;">Redaguoti Atlikto Darbo Forma:</h3>
                 <form method="post" style="margin-top: 1.3em;">
                     {% csrf_token %}
-                    <div>
+                    <div style="color: #F5FFFA;">
                         {{ existing_atliktas_darbas.bendrija | as_crispy_field }}
                     </div>
-                    <div>
+                    <div style="color: #F5FFFA;">
                         {{ existing_atliktas_darbas.pavadinimas | as_crispy_field }}
                     </div>
-                    <div>
+                    <div style="color: #F5FFFA;">
                         {{ existing_atliktas_darbas.aprasymas | as_crispy_field }}
                     </div>
-                    <div>
+                    <div style="color: #F5FFFA;">
                         {{ existing_atliktas_darbas.preliminari_kaina   | as_crispy_field }}
                     </div>
-                    <div>
+                    <div style="color: #F5FFFA;">
                         {{ existing_atliktas_darbas.galutine_kaina | as_crispy_field }}
                     </div>
-                    <div>
+                    <div style="color: #F5FFFA;">
                         {{ existing_atliktas_darbas.atlikti_iki | as_crispy_field }}
                     </div>
-                    <div>
+                    <div style="color: #F5FFFA;">
                         {{ existing_atliktas_darbas.darbas_atlikas  | as_crispy_field }}
                     </div>
-                    <div>
+                    <div style="color: #F5FFFA;">
                         {{ existing_atliktas_darbas.pastabos | as_crispy_field }}
                     </div>
-                    <button type="submit" class="btn btn-blue btn-signup btn-lg text-better-white">Submit</button>
+                    <button type="submit" class="btn btn-black btn-signup btn-lg text-better-white">Submit</button>
                 </form>
                 {% endif %}
             </div>
@@ -46,10 +46,10 @@
     </div>
 </div>
 {% else %}
-<div class="container-fluid">
+<div class="container" style="margin-top: 100px;">
     <div class="row">
         <div class="col text-center mt-3">
-            <h2 class="logo-font">Please Log In</h2>
+            <h2 class="logo-font text-better-white">Prašome Prisijungti</h2>
         </div>
     </div>
 </div>

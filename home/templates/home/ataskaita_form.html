@@ -11,34 +11,34 @@
             <div class="card-body">
                 {% if user.is_superuser %}
 
-                <h3>Ataskaita Form</h3>
+                <h3 style="color: #F5FFFA;">Ataskaitos Forma:</h3>
                 <form method="post" style="margin-top: 1.3em;">
                     {% csrf_token %}
-                    <div>
+                    <div style="color: #F5FFFA;">
                         {{ form.bendrija | as_crispy_field }}
                     </div>
-                    <div>
+                    <div style="color: #F5FFFA;">
                         {{ form.year | as_crispy_field }}
                     </div>
-                    <div>
+                    <div style="color: #F5FFFA;">
                         {{ form.mėnesis | as_crispy_field }}
                     </div>
-                    <div>
+                    <div style="color: #F5FFFA;">
                         {{ form.atlyginimas | as_crispy_field }}
                     </div>
-                    <div>
+                    <div style="color: #F5FFFA;">
                         {{ form.sodra | as_crispy_field }}
                     </div>
-                    <div>
+                    <div style="color: #F5FFFA;">
                         {{ form.vmi | as_crispy_field }}
                     </div>
-                    <div>
+                    <div style="color: #F5FFFA;">
                         {{ form.pvm_saskaitos_kvitas | as_crispy_field }}
                     </div>
-                    <div>
+                    <div style="color: #F5FFFA;">
                         {{ form.bankines_operacijos | as_crispy_field }}
                     </div>
-                    <button type="submit" class="btn btn-blue btn-signup btn-lg text-better-white">Submit</button>
+                    <button type="submit" class="btn btn-black btn-signup btn-lg text-better-white">Submit</button>
                 </form>
                 {% endif %}
             </div>
@@ -46,10 +46,10 @@
     </div>
 </div>
 {% else %}
-<div class="container-fluid">
+<div class="container" style="margin-top: 100px;">
     <div class="row">
         <div class="col text-center mt-3">
-            <h2 class="logo-font">Please Log In</h2>
+            <h2 class="logo-font text-better-white">Prašome Prisijungti</h2>
         </div>
     </div>
 </div>
